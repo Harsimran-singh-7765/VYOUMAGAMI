@@ -25,29 +25,33 @@ export default function Tech() {
       title: "AUTONOMY & AI",
       desc: "Advanced computer vision models and reliable control algorithms for true autonomous hazard avoidance on martian terrain.",
       icon: Cpu,
-      iconAnim: { animate: { scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }, transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } }
     },
     {
       id: "MECHANICAL",
       title: "CHASSIS & ARM",
       desc: "Precision CAD modeling, 3D printing and fabrication of the main rover skeleton and the 6-DOF robotic manipulator arm.",
       icon: Cog,
-      iconAnim: { animate: { rotate: 360 }, transition: { duration: 8, repeat: Infinity, ease: "linear" } }
     },
     {
       id: "ELECTRONICS",
       title: "HARDWARE & IOT",
       desc: "Custom PCB design, robust motor drivers, sensor arrays, and reliable communication links supporting accompanying drones.",
       icon: Wifi,
-      iconAnim: { animate: { opacity: [1, 0.3, 1] }, transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } }
     },
     {
       id: "MANAGEMENT",
       title: "DOCUMENTATION & INTEGRATION",
       desc: "Rigorous testing protocols and thorough documentation encompassing ERC Technical Reports and Mission Research Papers.",
       icon: FileCode,
-      iconAnim: { animate: { y: [0, -3, 0] }, transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } }
     }
+  ];
+
+  // Icon animation configs keyed by index for strict typing
+  const iconAnimations = [
+    { animate: { scale: [1, 1.15, 1] as number[], opacity: [0.7, 1, 0.7] as number[] }, transition: { duration: 2, repeat: Infinity, ease: "easeInOut" as const } },
+    { animate: { rotate: 360 as number }, transition: { duration: 8, repeat: Infinity, ease: "linear" as const } },
+    { animate: { opacity: [1, 0.3, 1] as number[] }, transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" as const } },
+    { animate: { y: [0, -3, 0] as number[] }, transition: { duration: 2, repeat: Infinity, ease: "easeInOut" as const } },
   ];
 
   return (
@@ -96,8 +100,8 @@ export default function Tech() {
                 {/* Animated Lucide icon */}
                 <motion.div
                   className="text-martian/60 group-hover:text-martian transition-colors"
-                  animate={mod.iconAnim.animate}
-                  transition={mod.iconAnim.transition}
+                  animate={iconAnimations[idx].animate}
+                  transition={iconAnimations[idx].transition}
                 >
                   <mod.icon size={22} strokeWidth={1.5} />
                 </motion.div>
