@@ -27,11 +27,11 @@ export default function Rover() {
         </motion.div>
         
         <div className="relative max-w-6xl mx-auto flex flex-col items-center">
-          <div className="relative w-full max-w-4xl py-20 grayscale hover:grayscale-0 transition-all duration-700 group">
+          <div className="relative w-full max-w-4xl py-20 grayscale-0 md:grayscale hover:grayscale-0 transition-all duration-700 group">
             <motion.div style={{ y: imgY }}>
               <img 
                 alt="Rover Blueprint" 
-                className="w-full h-auto opacity-30 mix-blend-screen group-hover:opacity-60 transition-opacity duration-700 blur-[1px] group-hover:blur-none" 
+                className="w-full h-auto opacity-70 md:opacity-30 mix-blend-screen transition-opacity duration-700 md:blur-[1px] md:group-hover:blur-none md:group-hover:opacity-60" 
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCniMWLNx5JdWmBcdoExdmW45aFmtbVmRff_fgrYVJvn9HtpmBGIGL_JsbXiKuM_E1EOpS8fAeL-M9HAV1glfc8MQdgh_9RVaz1mD7Ogaztr_l9zDh9AD32nUhIyq_DUNoRuvDRz2-bCEblyK7bWsHJwD_ElaP-63tdHrqzMJB3dG5Vb6x08okhifCD8YMkCoTdYzOdXozGySNmCVyGlVb2gJhLRd35B96hirPrXAP1Y_WUXSYDPlTb79gXawHNGWn3wUqR-3rLjcA"
               />
             </motion.div>
@@ -45,7 +45,7 @@ export default function Rover() {
             >
               <div className="text-right pr-4 group-hover:translate-x-[-10px] transition-transform duration-500">
                 <h6 className="text-martian font-bold text-[10px] uppercase">Cam_Suite_V2</h6>
-                <p className="text-[9px] text-gray-500 group-hover:text-gray-300">360° Stereoscopic visual array with LIDAR integration.</p>
+                <p className="text-[9px] text-gray-300">360° Stereoscopic visual array with LIDAR integration.</p>
               </div>
               <div className="label-line label-line-left w-24 ml-auto mt-2"></div>
             </motion.div>
@@ -59,7 +59,7 @@ export default function Rover() {
             >
               <div className="text-left pl-4 group-hover:translate-x-[10px] transition-transform duration-500">
                 <h6 className="text-martian font-bold text-[10px] uppercase">Rocker-Bogie_X</h6>
-                <p className="text-[9px] text-gray-500 group-hover:text-gray-300">Advanced suspension system for 30° incline stability.</p>
+                <p className="text-[9px] text-gray-300">Advanced suspension system for 30° incline stability.</p>
               </div>
               <div className="label-line label-line-right w-24 mr-auto mt-2"></div>
             </motion.div>
@@ -73,10 +73,31 @@ export default function Rover() {
             >
               <div className="text-right pr-4 group-hover:translate-x-[-10px] transition-transform duration-500">
                 <h6 className="text-martian font-bold text-[10px] uppercase">Arm_Module</h6>
-                <p className="text-[9px] text-gray-500 group-hover:text-gray-300">6-DOF manipulator for high-precision sample collection.</p>
+                <p className="text-[9px] text-gray-300">6-DOF manipulator for high-precision sample collection.</p>
               </div>
               <div className="label-line label-line-left w-24 ml-auto mt-2"></div>
             </motion.div>
+          </div>
+
+          {/* Mobile-only spec labels below the rover image */}
+          <div className="md:hidden w-full grid grid-cols-1 gap-4 mt-4">
+            {[
+              { title: "Cam_Suite_V2", desc: "360° Stereoscopic visual array with LIDAR integration." },
+              { title: "Rocker-Bogie_X", desc: "Advanced suspension system for 30° incline stability." },
+              { title: "Arm_Module", desc: "6-DOF manipulator for high-precision sample collection." },
+            ].map((spec, i) => (
+              <motion.div
+                key={i}
+                className="border border-white/10 p-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
+              >
+                <h6 className="text-martian font-bold text-[10px] uppercase mb-1">{spec.title}</h6>
+                <p className="text-[9px] text-gray-300 leading-relaxed">{spec.desc}</p>
+              </motion.div>
+            ))}
           </div>
           
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 w-full border-t border-white/10 pt-8 relative">
@@ -102,7 +123,7 @@ export default function Rover() {
                 transition={{ delay: 1 + (idx * 0.1), duration: 0.5 }}
                 className="group"
               >
-                <span className="text-[10px] uppercase tracking-widest text-gray-600 block group-hover:text-martian transition-colors">{stat.label}</span>
+                <span className="text-[10px] uppercase tracking-widest text-gray-400 block">{stat.label}</span>
                 <span className="text-lg font-bold group-hover:scale-110 inline-block transition-transform transform origin-left">{stat.value}</span>
               </motion.div>
             ))}

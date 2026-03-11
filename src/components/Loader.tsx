@@ -35,25 +35,28 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           loop 
           muted 
           playsInline
-          className="w-64 h-auto mix-blend-screen drop-shadow-[0_0_15px_rgba(226,88,34,0.3)] blur-[0.5px] contrast-125 brightness-110 mb-[-2rem] object-contain relative z-10"
+          className="w-full max-w-lg h-auto mix-blend-screen blur-[0.4px] contrast-125 brightness-110 object-contain relative z-10"
         />
-        <div className="w-64 h-[2px] bg-white/10 overflow-hidden relative rounded-full z-0">
-          <motion.div
-            className="h-full bg-martian absolute left-0 top-0"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.1 }}
-          />
+        
+        {/* Jumping Dots Animation */}
+        <div className="flex space-x-2 mt-8">
+          {[0, 1, 2].map((index) => (
+            <motion.div
+              key={index}
+              className="w-2 h-2 bg-martian rounded-full shadow-[0_0_8px_rgba(226,88,34,0.6)]"
+              animate={{
+                y: ["0%", "-100%", "0%"],
+              }}
+              transition={{
+                duration: 0.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: index * 0.15,
+              }}
+            />
+          ))}
         </div>
       </div>
-      <motion.p
-        className="text-martian font-mono text-xs mt-4 uppercase tracking-[0.3em]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
-        Initializing Sequence... {progress}%
-      </motion.p>
     </motion.div>
   );
 }

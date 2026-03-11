@@ -101,17 +101,17 @@ export default function Hero() {
 
       {/* Floating Astronaut Lottie */}
       <motion.div 
-        className="absolute right-[5%] top-1/3 opacity-80 mix-blend-screen hidden lg:block"
+        className="absolute right-[2%] top-1/3 hidden lg:block mix-blend-screen"
         style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "80%"]) }}
         initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 0.8 }}
+        animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
       >
         <Player
           autoplay
           loop
-          src="/lottie/astronaut.json"
-          style={{ height: '350px', width: '350px' }}
+          src="/astronaut.json"
+          style={{ height: '380px', width: '380px' }}
         />
       </motion.div>
       
