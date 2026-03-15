@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -10,14 +11,17 @@ export default function Navbar() {
       transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
       className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-cosmic-midnight/80 backdrop-blur-md border-b border-white/10"
     >
-      <div className="flex items-center gap-4">
-        <div className="w-8 h-8 border-2 border-martian flex items-center justify-center transform rotate-45 group hover:bg-martian/10 transition-colors cursor-pointer">
-          <div className="w-4 h-4 bg-martian flex items-center justify-center">
-             <div className="w-1 h-1 bg-cosmic-midnight"></div>
-          </div>
+      <div className="flex items-center gap-4 cursor-pointer group">
+        <div className="relative w-10 h-10 overflow-hidden">
+          <Image 
+            src="/logo.PNG" 
+            alt="Vyomagami Logo" 
+            fill
+            className="object-contain"
+          />
         </div>
-        <div className="flex flex-col cursor-pointer">
-          <span className="text-xl font-bold tracking-widest leading-none">VYOUMAGAMI</span>
+        <div className="flex flex-col">
+          <span className="text-xl font-bold tracking-widest leading-none group-hover:text-martian transition-colors">VYOUMAGAMI</span>
         </div>
       </div>
       
